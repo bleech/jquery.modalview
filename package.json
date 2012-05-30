@@ -1,0 +1,33 @@
+{
+  "name": "jquery.modalview",
+  "title": "jQuery Modalview",
+  "description": "A simple prefetching ajax modal plugin.",
+  "version": "0.1.0",
+  "homepage": "https://github.com/bleech/jquery.modalview",
+  "author": {
+    "name": "bleech",
+    "email": "hello@bleech.de",
+    "url": "http://bleech.de"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/bleech/jquery.modalview.git"
+  },
+  "bugs": {
+    "url": "https://github.com/bleech/jquery.modalview/issues"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/bleech/jquery.modalview/blob/master/LICENSE-MIT"
+    },
+    {
+      "type": "GPL",
+      "url": "https://github.com/bleech/jquery.modalview/blob/master/LICENSE-GPL"
+    }
+  ],
+  "dependencies": {
+    "jquery": "~1.7"
+  },
+  "keywords": []
+}

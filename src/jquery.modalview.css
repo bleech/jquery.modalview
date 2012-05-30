@@ -1,0 +1,33 @@
+/*
+ * jquery.modalview
+ * https://github.com/bleech/jquery.modalview
+ *
+ * Copyright (c) 2012 bleech
+ * Licensed under the MIT, GPL licenses.
+ */
+ 
+.modalview {
+	background: #fff;
+	background: rgba(255, 255, 255, 0.8);
+	height: 100%;
+	left: 0px;
+	position: fixed;
+	top: 0px;
+	width: 100%;
+	z-index: 999;
+}
+
+.modalview .close {
+	cursor: pointer;
+	position: absolute;
+	right: 5px;
+	top: 5px;
+}
+
+.modalview .container {
+	background: #fff;
+	bottom: 20px;
+	left: 50%;
+	position: absolute;
+	top: 20px;
+}
