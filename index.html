@@ -1,0 +1,115 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Jquery.modalview by bleech</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Jquery.modalview</h1>
+        <p>A simple prefetching ajax modal plugin.</p>
+        <p class="view"><a href="https://github.com/bleech/jquery.modalview">View the Project on GitHub <small>bleech/jquery.modalview</small></a></p>
+        <ul>
+          <li><a href="https://github.com/bleech/jquery.modalview/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/bleech/jquery.modalview/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/bleech/jquery.modalview">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h1>jQuery Modalview</h1>
+
+<p>A simple prefetching ajax modal plugin. Prefetches the target page DOM and displays it in a modal when clicking on the link.<br>
+Opens given content as string too.</p>
+
+<h2>Getting Started</h2>
+
+<p>Download the <a href="https://raw.github.com/bleech/jquery.modalview/master/dist/jquery.modalview.min.js">production version</a> or the <a href="https://raw.github.com/bleech/jquery.modalview/master/dist/jquery.modalview.js">development version</a>.<br>
+Integrate the basic styles from the <a href="https://raw.github.com/bleech/jquery.modalview/master/dist/jquery.modalview.css">stylesheet</a> and add your own styling.</p>
+
+<h3>Markup</h3>
+
+<div class="highlight">
+<pre><span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"somepage.html"</span> <span class="na">class=</span><span class="s">"modal"</span><span class="nt">&gt;</span>Some page<span class="nt">&lt;/a&gt;</span>
+</pre>
+</div>
+
+
+<h3>Initialization</h3>
+
+<div class="highlight">
+<pre><span class="nx">$</span><span class="p">(</span><span class="s1">'.modal'</span><span class="p">).</span><span class="nx">modalview</span><span class="p">();</span>
+</pre>
+</div>
+
+
+<p>or</p>
+
+<div class="highlight">
+<pre><span class="nx">$</span><span class="p">.</span><span class="nx">modalview</span><span class="p">(</span><span class="s1">'some content'</span><span class="p">);</span>
+</pre>
+</div>
+
+
+<h3>Options</h3>
+
+<div class="highlight">
+<pre><span class="c1">// setting global default options</span>
+<span class="nx">$</span><span class="p">.</span><span class="nx">fn</span><span class="p">.</span><span class="nx">modalview</span><span class="p">.</span><span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="nx">selector</span><span class="o">:</span>   <span class="s1">'#main'</span><span class="p">,</span>
+    <span class="nx">closeText</span><span class="o">:</span>  <span class="s1">'close'</span><span class="p">,</span>
+    <span class="nx">padding</span><span class="o">:</span>    <span class="mi">10</span><span class="p">,</span>
+    <span class="nx">width</span><span class="o">:</span>      <span class="mi">580</span><span class="p">,</span>
+    <span class="nx">onInit</span><span class="o">:</span>     <span class="kd">function</span> <span class="p">()</span> <span class="p">{},</span>
+    <span class="nx">onOpen</span><span class="o">:</span>     <span class="kd">function</span> <span class="p">()</span> <span class="p">{},</span>
+    <span class="nx">onClose</span><span class="o">:</span>    <span class="kd">function</span> <span class="p">()</span> <span class="p">{}</span>
+<span class="p">};</span>
+
+<span class="c1">// setting custom instance options</span>
+<span class="nx">$</span><span class="p">(</span><span class="s1">'.modal'</span><span class="p">).</span><span class="nx">modalview</span><span class="p">({</span>
+    <span class="nx">selector</span><span class="o">:</span>   <span class="s1">'#main'</span><span class="p">,</span>
+    <span class="nx">closeText</span><span class="o">:</span>  <span class="s1">'close'</span><span class="p">,</span>
+    <span class="nx">padding</span><span class="o">:</span>    <span class="mi">10</span><span class="p">,</span>
+    <span class="nx">width</span><span class="o">:</span>      <span class="mi">580</span><span class="p">,</span>
+    <span class="nx">onInit</span><span class="o">:</span>     <span class="kd">function</span> <span class="p">()</span> <span class="p">{},</span>
+    <span class="nx">onOpen</span><span class="o">:</span>     <span class="kd">function</span> <span class="p">()</span> <span class="p">{},</span>
+    <span class="nx">onClose</span><span class="o">:</span>    <span class="kd">function</span> <span class="p">()</span> <span class="p">{}</span>
+<span class="p">});</span>
+</pre>
+</div>
+
+
+<h2>Roadmap</h2>
+
+<ul>
+<li>refactoring to automatically set the target width &amp; padding (is this a good idea?)</li>
+<li>refactoring close button (html string?)</li>
+<li>making the plugin extendable globally and per instance (prototypal inheritance)</li>
+</ul><h2>Contributing</h2>
+
+<p>In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using <a href="https://github.com/cowboy/grunt">grunt</a>.</p>
+
+<p><em>Also, please don't edit files in the "dist" subdirectory as they are generated via grunt. You'll find source code in the "src" subdirectory!</em></p>
+
+<h2>License</h2>
+
+<p>Copyright (c) 2012 bleech<br>
+Licensed under the MIT, GPL licenses.</p>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/bleech">bleech</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>
