@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>jQuery Modalview Examples</title>
+  <link rel="stylesheet" href="../src/jquery.modalview.css">
+  <script src="../libs/jquery/jquery.js"></script>
+  <script src="../src/jquery.modalview.js"></script>
+  <script>
+    $(document).ready(function () {
+      $('a:first').modalview();
+      $('a:eq(1)').modalview({
+        selector: '#main2'
+      });
+    });
+  </script>
+  <style>
+    body {
+      background: #ccc;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <h2>Links:</h2>
+    <a href="">Test 1</a><br/>
+    <a href="">Test 2</a>
+
+    <h2>First container:</h2>
+    <div id="main">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</div>
+
+    <h2>Second container:</h2>
+    <div id="main2">Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.</div>
+
+  </div>
+</body>
+</html>

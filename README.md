@@ -1,6 +1,7 @@
 # jQuery Modalview
 
-A simple prefetching ajax modal plugin. Prefetches the target page DOM and displays it in a modal when clicking on the link.
+A simple prefetching ajax modal plugin. Prefetches the target page DOM and displays it in a modal when clicking on the link.  
+Opens given content as string too.
 
 ## Getting Started
 Download the [production version][min] or the [development version][max].  
@@ -19,6 +20,10 @@ Integrate the basic styles from the [stylesheet][styles] and add your own stylin
 ```javascript
 $('.modal').modalview();
 ```
+or
+```javascript
+$.modalview('some content');
+```
 
 ### Options
 ```javascript
@@ -26,8 +31,8 @@ $('.modal').modalview();
 $.fn.modalview.options = {
 	selector:   '#main',
 	closeText:  'close',
-	padding:    '10px',
-	width:      '580px',
+	padding:    10,
+	width:      580,
 	onInit:     function () {},
 	onOpen:     function () {},
 	onClose:    function () {}
@@ -37,8 +42,8 @@ $.fn.modalview.options = {
 $('.modal').modalview({
 	selector:   '#main',
 	closeText:  'close',
-	padding:    '10px',
-	width:      '580px',
+	padding:    10,
+	width:      580,
 	onInit:     function () {},
 	onOpen:     function () {},
 	onClose:    function () {}
@@ -46,8 +51,7 @@ $('.modal').modalview({
 ```
 
 ## Roadmap
-- creating a demo
-- refactoring to automatically set the target width & padding
+- refactoring to automatically set the target width & padding (is this a good idea?)
 - refactoring close button (html string?)
 - making the plugin extendable globally and per instance (prototypal inheritance)
 

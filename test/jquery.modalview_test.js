@@ -23,12 +23,16 @@
   */
 
   module('jQuery#modalview', {
-    setup: function() {
+    setup: function () {
       // setup dom element accessors
       this.links = $('#qunit-fixture').find('a');
 
       // apply modalview plugin
-      this.links.modalview();
+      this.links.first().modalview();
+      this.links.eq(1).modalview({
+        selector: '#main2'
+      });
+
     },
     teardown: function () {
       $('.modalview').remove();
@@ -43,14 +47,14 @@
   test('modalview container', 3, function () {
     var container = $('.modalview');
 
-    equal(container.length, 2, 'creates a modalview container for each link');
+    equal(container.length, 1, 'creates not more than one global modalview container for all links');
     ok(container.is(':hidden'), 'hides container by default');
 
     this.links.trigger('click');
     ok(container.is(':visible'), 'shows container on click');
   });
 
-  asyncTest('content loading', 4, function () {
+  asyncTest('content loading', 5, function () {
     var that      = this;
     var modalview = this.links.first().data('modalview');
     var container = $('.modalview');
@@ -60,17 +64,20 @@
       equal(container.find('.container').text(), '', 'closed container is empty');
 
       that.links.first().trigger('click');
-      equal(container.find('.container').first().text(), 'main content', 'open container holds fetched content');
+      equal(container.find('.container').text(), 'main content', 'open container holds fetched content');
 
       container.find('.close').trigger('click');
       equal(container.find('.container').text(), '', 'container is empty again after having been closed');
+
+      that.links.eq(1).trigger('click');
+      equal(container.find('.container').text(), 'main2 content', 'open container holds fetched content');
 
       start();
     }, 100);
   });
 
   module('jQuery#modalview options', {
-    setup: function() {
+    setup: function () {
       // setup dom element accessors
       this.links = $('#qunit-fixture').find('a');
       $('.modalview').remove();
@@ -79,7 +86,7 @@
 
   test('default width & padding options', 1, function () {
     this.links.modalview();
-    equal($('.modalview .container:first').outerWidth(), 600, 'container has default width of 600px');
+    equal($('.modalview .container').outerWidth(), 600, 'container has default width of 600px');
   });
 
   test('setting custom width & padding options', 1, function () {
@@ -87,7 +94,24 @@
       padding: 20,
       width: 460
     });
-    equal($('.modalview .container:first').outerWidth(), 500, 'container has a width of 500px');
+    equal($('.modalview .container').outerWidth(), 500, 'container has a width of 500px');
   });
+
+  module('jQuery#modalview global', {
+    setup: function () {
+      $('.modalview').remove();
+    }
+  });
+
+  test('global content overloading', 2, function () {
+    var modalview = $.modalview('test');
+    var container = $('.modalview');
+
+    ok(container.is(':visible'), 'opens container');
+
+    container.find('.close').click();
+    ok(container.is(':hidden'), 'hides container on close click');
+  });
+
 
 }(jQuery));

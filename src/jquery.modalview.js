@@ -21,12 +21,20 @@
 
     };
 
+    $.modalview = function ( content, options ) {
+
+      options = $.extend( {}, $.fn.modalview.options, options );
+
+      return new Modalview(content, options);
+
+    };
+
     // global default options
     $.fn.modalview.options = {
       selector:   '#main',
       closeText:  'close',
-      padding:    '10px',
-      width:      '580px',
+      padding:    10,
+      width:      580,
       onInit:     function () {},
       onOpen:     function () {},
       onClose:    function () {}
@@ -48,29 +56,39 @@
       html +=   '<div class="container"></div>';
       html += '</div>';
 
-      // insert the modalview into the page
-      this.modalview = $(html).appendTo('body').hide();
+      // insert the modalview into the page or grab the existing one
+      this.modalview = $('.modalview').length > 0 ? $('.modalview') : $(html).appendTo('body').hide();
       this.container = this.modalview.find('.container');
 
       // set container width and padding
       this.container.css({
-        padding:  this.options.padding,
-        width:    this.options.width
+        padding:  parseInt(this.options.padding, 10) + 'px',
+        width:    parseInt(this.options.width, 10) + 'px'
       });
 
       // center container horizontally
       this.container.css('marginLeft', -1 * (this.container.outerWidth() / 2) + 'px');
 
-      // prefetch content
-      $.get(elem.attr('href'), function (result) {
-        that.content = $(result).find(that.options.selector).html();
-      });
+      // set content or delegate to element
+      if (typeof elem === 'string') {
 
-      // open modal on element click
-      elem.on('click', function (e) {
-        e.preventDefault();
-        that.open();
-      });
+        this.content = elem;
+        this.open();
+
+      } else {
+
+        // prefetch content
+        $.get(elem.attr('href'), function (result) {
+          that.content = $(result).find(that.options.selector).html();
+        });
+
+        // open modal on element click
+        elem.on('click', function (e) {
+          e.preventDefault();
+          that.open();
+        });
+
+      }
 
       // close modal on close-click
       this.modalview.on('click', '.close', $.proxy(this.close, this));
