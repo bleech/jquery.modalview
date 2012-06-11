@@ -106,6 +106,7 @@
     // close modalview
     Modalview.prototype.close = function () {
       this.modalview.hide();
+      this.container.find('*').off();
       this.container.html('');
 
       // onClose callback
