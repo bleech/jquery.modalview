@@ -25,7 +25,7 @@
 
       options = $.extend( {}, $.fn.modalview.options, options );
 
-      return new Modalview(content, options);
+      return new Modalview(content, options, true);
 
     };
 
@@ -41,7 +41,7 @@
     };
 
     // plugin constructor
-    var Modalview = function (elem, options) {
+    var Modalview = function (elem, options, render) {
 
       var that = this;
       var html;
@@ -70,7 +70,7 @@
       this.container.css('marginLeft', -1 * (this.container.outerWidth() / 2) + 'px');
 
       // set content or delegate to element
-      if (typeof elem === 'string') {
+      if (render) {
 
         this.content = elem;
         this.open();
