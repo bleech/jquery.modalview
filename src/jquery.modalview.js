@@ -79,7 +79,11 @@
 
         // prefetch content
         $.get(elem.attr('href'), function (result) {
-          that.content = $(result).find(that.options.selector).html();
+          // 1. Create a dummy div to hold the results
+          // 2. inject the contents of the document in, removing the scripts
+          //    to avoid any 'Permission Denied' errors in IE
+          // 3. Locate the specified elements
+          that.content = $('<div>').append(result.replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, "")).find(that.options.selector).html();
         });
 
         // open modal on element click
