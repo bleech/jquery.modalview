@@ -12,7 +12,7 @@
     $.fn.modalview = function ( options ) {
 
       options = $.extend( {}, $.fn.modalview.options, options );
-      
+
       // create a new modalview for each link element
       return this.filter('a').each(function () {
         var elem = $(this);
@@ -114,6 +114,7 @@
     // close modalview
     Modalview.prototype.close = function () {
       this.modalview.hide();
+      this.modalview.off();
       this.container.find('*').off();
       this.container.html('');
 
