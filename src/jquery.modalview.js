@@ -37,7 +37,8 @@
       width:      580,
       onInit:     function () {},
       onOpen:     function () {},
-      onClose:    function () {}
+      onClose:    function () {},
+      onDestroy:  function () {}
     };
 
     // plugin constructor
@@ -115,11 +116,19 @@
     Modalview.prototype.close = function () {
       this.modalview.hide();
       this.modalview.off();
-      this.container.find('*').off();
       this.container.html('');
 
       // onClose callback
       this.options.onClose.call(this);
+    };
+
+    // close modalview
+    Modalview.prototype.destroy = function () {
+      this.modalview.off();
+      this.modalview.remove();
+
+      // onDestroy callback
+      this.options.onDestroy.call(this);
     };
 
 }( jQuery, window, document ));

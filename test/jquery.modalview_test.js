@@ -44,14 +44,18 @@
     ok(modalview, 'loads onto element');
   });
 
-  test('modalview container', 3, function () {
+  test('modalview container', 4, function () {
     var container = $('.modalview');
+    var modalview = this.links.first().data('modalview');
 
     equal(container.length, 1, 'creates not more than one global modalview container for all links');
     ok(container.is(':hidden'), 'hides container by default');
 
     this.links.trigger('click');
     ok(container.is(':visible'), 'shows container on click');
+
+    modalview.destroy();
+    equal($('.modalview').length, 0, 'destroys a modalview');
   });
 
   asyncTest('content loading', 5, function () {

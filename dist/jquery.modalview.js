@@ -1,4 +1,4 @@
-/*! jQuery Modalview - v0.1.0 - 2012-06-15
+/*! jQuery Modalview - v0.1.0 - 2012-07-16
 * https://github.com/bleech/jquery.modalview
 * Copyright (c) 2012 bleech; Licensed MIT, GPL */
 
@@ -8,7 +8,7 @@
     $.fn.modalview = function ( options ) {
 
       options = $.extend( {}, $.fn.modalview.options, options );
-      
+
       // create a new modalview for each link element
       return this.filter('a').each(function () {
         var elem = $(this);
@@ -33,7 +33,8 @@
       width:      580,
       onInit:     function () {},
       onOpen:     function () {},
-      onClose:    function () {}
+      onClose:    function () {},
+      onDestroy:  function () {}
     };
 
     // plugin constructor
@@ -110,11 +111,20 @@
     // close modalview
     Modalview.prototype.close = function () {
       this.modalview.hide();
-      this.container.find('*').off();
+      this.modalview.off();
       this.container.html('');
 
       // onClose callback
       this.options.onClose.call(this);
+    };
+
+    // close modalview
+    Modalview.prototype.destroy = function () {
+      this.modalview.off();
+      this.modalview.remove();
+
+      // onDestroy callback
+      this.options.onDestroy.call(this);
     };
 
 }( jQuery, window, document ));
