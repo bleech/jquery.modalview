@@ -1,4 +1,4 @@
-/*! jQuery Modalview - v0.1.0 - 2012-11-02
+/*! jQuery Modalview - v0.2 - 2012-11-02
 * https://github.com/bleech/jquery.modalview
 * Copyright (c) 2012 bleech; Licensed MIT, GPL */
 
@@ -101,17 +101,34 @@
 
     };
 
-    // open modalview
-    Modalview.prototype.open = function () {
-      this.container.html(this.content);
-
-      // clear classes and add custom class
+    // clear classes and add custom class
+    Modalview.prototype.addCustomClass = function () {
       this.modalview.removeClass().addClass('modalview');
       if (this.elem && this.elem.data('modalclass') && this.elem.data('modalclass').length > 0) {
         this.modalview.addClass(this.elem.data('modalclass'));
       }
+    };
 
+    // jump to a DOM element referenced by hash string or jump to top (if no hash given)
+    Modalview.prototype.jumpToHashElement = function () {
+      if (this.elem) {
+        var hash = this.elem.attr('href').split('#')[1];
+        if (hash) {
+          document.getElementById(hash).scrollIntoView(true);
+        } else {
+          this.container.scrollTop(0);
+          this.container.animate({ scrollTop: 0 }, 0);
+        }
+      }
+    };
+
+    // open modalview
+    Modalview.prototype.open = function () {
+      this.container.html(this.content);
+
+      this.addCustomClass();
       this.modalview.show();
+      this.jumpToHashElement();
 
       // onOpen callback
       this.options.onOpen.call(this);

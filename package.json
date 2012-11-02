@@ -2,7 +2,7 @@
   "name": "jquery.modalview",
   "title": "jQuery Modalview",
   "description": "A simple prefetching ajax modal plugin.",
-  "version": "0.1.0",
+  "version": "0.2",
   "homepage": "https://github.com/bleech/jquery.modalview",
   "author": {
     "name": "bleech",
