@@ -16,6 +16,16 @@ Integrate the basic styles from the [stylesheet][styles] and add your own stylin
 <a href="somepage.html" class="modal">Some page</a>
 ```
 
+jump to a DOM element referenced by hash string
+```html
+<a href="somepage.html#qunit-fixture" class="modal">Some page</a>
+```
+
+add a custom class to the modalview container
+```html
+<a href="somepage.html" class="modal" data-modalclass="custom">Some page</a>
+```
+
 ### Initialization
 ```javascript
 $('.modal').modalview();
