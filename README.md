@@ -1,6 +1,7 @@
 # jQuery Modalview
 
 A simple prefetching ajax modal plugin. Prefetches the target page DOM and displays it in a modal when clicking on the link.  
+Accepts a JSON response with a content attribute too.  
 Opens given content as string too.
 
 ## Getting Started
