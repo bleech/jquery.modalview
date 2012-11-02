@@ -44,7 +44,7 @@
     ok(modalview, 'loads onto element');
   });
 
-  test('modalview container', 4, function () {
+  test('modalview container', 5, function () {
     var container = $('.modalview');
     var modalview = this.links.first().data('modalview');
 
@@ -53,6 +53,8 @@
 
     this.links.trigger('click');
     ok(container.is(':visible'), 'shows container on click');
+
+    ok(container.hasClass('custom'), 'receives a custom class');
 
     modalview.destroy();
     equal($('.modalview').length, 0, 'destroys a modalview');

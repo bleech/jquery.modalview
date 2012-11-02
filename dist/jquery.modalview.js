@@ -1,4 +1,4 @@
-/*! jQuery Modalview - v0.1.0 - 2012-07-16
+/*! jQuery Modalview - v0.1.0 - 2012-11-02
 * https://github.com/bleech/jquery.modalview
 * Copyright (c) 2012 bleech; Licensed MIT, GPL */
 
@@ -74,6 +74,8 @@
 
       } else {
 
+        this.elem = elem;
+
         // prefetch content
         $.get(elem.attr('href'), function (result) {
           // 1. Create a dummy div to hold the results
@@ -102,6 +104,13 @@
     // open modalview
     Modalview.prototype.open = function () {
       this.container.html(this.content);
+
+      // clear classes and add custom class
+      this.modalview.removeClass().addClass('modalview');
+      if (this.elem && this.elem.data('modalclass') && this.elem.data('modalclass').length > 0) {
+        this.modalview.addClass(this.elem.data('modalclass'));
+      }
+
       this.modalview.show();
 
       // onOpen callback
