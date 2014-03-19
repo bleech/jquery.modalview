@@ -1,0 +1,19 @@
+{
+  "name": "jquery.modalview",
+  "version": "0.2.0",
+  "homepage": "https://github.com/bleech/jquery.modalview",
+  "authors": [
+    "Steffen Bewersdorff <steffen@bleech.de>"
+    "Dominik Tränklein <dominik@bleech.de>"
+  ],
+  "description": "A simple prefetching ajax modal plugin.",
+  "main": ["dist/jquery.modalview.js", "dist/jquery.modalview.js"],
+  "license": "MIT, GPL",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

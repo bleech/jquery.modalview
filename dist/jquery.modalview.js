@@ -1,6 +1,10 @@
-/*! jQuery Modalview - v0.2 - 2012-11-02
-* https://github.com/bleech/jquery.modalview
-* Copyright (c) 2012 bleech; Licensed MIT, GPL */
+/*
+ * jquery.modalview
+ * https://github.com/bleech/jquery.modalview
+ *
+ * Copyright (c) 2012 bleech
+ * Licensed under the MIT, GPL licenses.
+ */
 
 ;(function ( $, window, document, undefined ) {
 
